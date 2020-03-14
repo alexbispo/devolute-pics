@@ -11,8 +11,9 @@ class Api::V1::PicturesController < ApplicationController
   end
 
   def index
-    links = current_user.pictures&.map { |p| url_for(p.file) }
-    render json: { links: links }, status: 200
+    # links = current_user.pictures&.map { |p| url_for(p.file) }
+    # render json: { links: links }, status: 200
+    @pictures = current_user.pictures
   end
 
 private
