@@ -3,6 +3,10 @@
 Simple web application, that fulfills the following stories:
 
 ## As a user, I can register
+- ~~FE.~~
+- ~~BE.~~
+- Automated Testing BE.
+- Automated Testing FE.
 
 ## As a user, I can log in
 - ~~Auth by JWT.~~
@@ -12,7 +16,7 @@ Simple web application, that fulfills the following stories:
 - Automated Testing FE.
 
 ## As a user I can upload an image
-- ~~FE.~~
+- FE.
 - BE.
 - Automated Testing BE.
 - Automated Testing FE.
