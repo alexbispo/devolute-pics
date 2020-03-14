@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post 'auth', to: 'authentication#create'
       resources :users, only: [:create]
+      resources :pictures, only: [:create, :index]
     end
   end
 end

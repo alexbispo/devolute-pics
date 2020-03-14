@@ -2,6 +2,8 @@ class ApplicationController < ActionController::API
   before_action :set_defaullt_format
   before_action :authenticate_token!
 
+  attr_reader :current_user
+
 private
 
   def set_defaullt_format
