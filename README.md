@@ -16,12 +16,16 @@ Simple web application, that fulfills the following stories:
 - Automated Testing FE.
 
 ## As a user I can upload an image
-- FE.
-- BE.
+- ~~FE.~~
+- ~~BE.~~
 - Automated Testing BE.
 - Automated Testing FE.
 
 ## As a user I can list my uploaded images with thumbnails
+- ~~FE.~~
+- ~~BE.~~
+- Automated Testing BE.
+- Automated Testing FE.
 
 Work Method:
 
