@@ -52,4 +52,7 @@ Things you may want to cover:
 
 * Deployment instructions
 
+    $ git push heroku master
+
+    $ heroku run rails db:migrate
 * ...
