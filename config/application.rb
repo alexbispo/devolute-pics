@@ -34,7 +34,7 @@ module DevolutePics
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins Rails.application.credentials[Rails.env.to_sym][:devolute_pics_front_url]
+        origins ENV["DEVOLUTE_PICS_FRONT_URL"] || 'http://localhost:4200'
         resource '*', headers: :any, methods: [:get, :post, :options]
       end
     end
