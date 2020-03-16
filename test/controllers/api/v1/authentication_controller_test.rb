@@ -8,4 +8,10 @@ class AuthenticationControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert @response.body.include? 'token'
   end
+
+  test "responds unauthorized when invalid email or passwor" do
+    post api_v1_auth_url, params: { email: 'invalid@test.com', password: 'invalid123' }
+
+    assert_response :unauthorized
+  end
 end
