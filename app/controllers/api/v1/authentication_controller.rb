@@ -2,10 +2,12 @@ class Api::V1::AuthenticationController < ApplicationController
   skip_before_action :authenticate_token!
 
   def create
-    user = User.find_by(email: params[:email])
+    auth_service = AuthenticationService.new
+    authenticated_user = auth_service.authenticate(params[:email], params[:password])
 
-    if user&.valid_password?(params[:password])
-      render json: { token: JsonWebToken.encode(id: user.id, name: user.username) }
+    if authenticated_user
+      render json: { token: JsonWebToken.encode(id: authenticated_user.id,
+                     name: authenticated_user.username) }
     else
       render json: { errors: ["Invalid email or password"] }, status: :unauthorized
     end
