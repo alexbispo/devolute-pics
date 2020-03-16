@@ -1,0 +1,4 @@
+mozart:
+  username: mozart_fixture
+  email: mozart_fixture@test.com
+  password_digest: <%= BCrypt::Password.create('mozart!123') %>
