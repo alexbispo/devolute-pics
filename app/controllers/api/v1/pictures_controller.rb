@@ -4,16 +4,14 @@ class Api::V1::PicturesController < ApplicationController
     picture = Picture.new(picture_params)
     picture.user = current_user
     if picture.save
-      head 201
+      head :created
     else
       render json: picture.errors, status: :unprocessable_entity
     end
   end
 
   def index
-    # links = current_user.pictures&.map { |p| url_for(p.file) }
-    # render json: { links: links }, status: 200
-    @pictures = current_user.pictures
+    @pictures = current_user.pictures.with_attached_file
   end
 
 private
