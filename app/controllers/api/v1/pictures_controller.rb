@@ -12,7 +12,7 @@ class Api::V1::PicturesController < ApplicationController
   end
 
   def index
-    @pictures = current_user.pictures.with_attached_file
+    @pictures = PictureSearchingService.new.all_by_user(current_user)
   end
 
 private

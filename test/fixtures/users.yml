@@ -2,3 +2,8 @@ mozart:
   username: mozart_fixture
   email: mozart_fixture@test.com
   password_digest: <%= BCrypt::Password.create('mozart!123') %>
+
+jhon:
+  username: jhon
+  email: jhon@test.com
+  password_digest: <%= BCrypt::Password.create('abc!123') %>
