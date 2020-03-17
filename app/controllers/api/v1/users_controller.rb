@@ -2,13 +2,13 @@ class Api::V1::UsersController < ApplicationController
   skip_before_action :authenticate_token!, only: [:create]
 
   def create
-    user = User.new(user_params)
+    register_service = UserRegisterService.new
+    user = register_service.register(user_params)
 
-    if user.save
+    if user.errors.empty?
       render( json: { userId: user.id,
                       userName: user.username,
                       userEmail: user.email }, status: :created)
-
     else
       render json: user.errors, status: :unprocessable_entity
     end
