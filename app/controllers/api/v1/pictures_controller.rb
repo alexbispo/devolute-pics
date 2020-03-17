@@ -1,9 +1,10 @@
 class Api::V1::PicturesController < ApplicationController
 
   def create
-    picture = Picture.new(picture_params)
-    picture.user = current_user
-    if picture.save
+    picture_creation_service = PictureCreationService.new
+    picture = picture_creation_service.add(current_user, picture_params)
+
+    if picture.persisted?
       head :created
     else
       render json: picture.errors, status: :unprocessable_entity

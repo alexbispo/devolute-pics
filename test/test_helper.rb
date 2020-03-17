@@ -6,7 +6,9 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def fixture_file_upload(path)
+    Rack::Test::UploadedFile.new(File.join(fixture_path, path))
+  end
 end
 
 module AuthTokenHelper

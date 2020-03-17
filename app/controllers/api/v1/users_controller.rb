@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
     register_service = UserRegisterService.new
     user = register_service.register(user_params)
 
-    if user.errors.empty?
+    if user.persisted?
       render( json: { userId: user.id,
                       userName: user.username,
                       userEmail: user.email }, status: :created)

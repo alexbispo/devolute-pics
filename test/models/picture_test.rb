@@ -4,7 +4,7 @@ class PictureTest < ActiveSupport::TestCase
 
   test "create a picture" do
     user = users(:mozart)
-    image = Rack::Test::UploadedFile.new(File.join(fixture_path, 'files/colcheia.png'))
+    image = fixture_file_upload('files/colcheia.png')
     pic = Picture.new(user: user, file: image)
 
     assert pic.save
