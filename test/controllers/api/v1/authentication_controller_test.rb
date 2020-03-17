@@ -14,4 +14,20 @@ class AuthenticationControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :unauthorized
   end
+
+  test "responds unauthorized when auth token is invalid." do
+    post api_v1_auth_check_url
+
+    assert_response :unauthorized
+  end
+
+  test "responds success when auth token is valid." do
+    user = users(:mozart)
+    token = authenticate(user.email, 'mozart!123')
+
+    post api_v1_auth_check_url,
+         headers: {"Authorization": token}
+
+    assert_response :success
+  end
 end

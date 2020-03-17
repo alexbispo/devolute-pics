@@ -1,5 +1,5 @@
 class Api::V1::AuthenticationController < ApplicationController
-  skip_before_action :authenticate_token!
+  skip_before_action :authenticate_token!, only: :create
 
   def create
     auth_service = AuthenticationService.new
@@ -11,5 +11,9 @@ class Api::V1::AuthenticationController < ApplicationController
     else
       render json: { errors: ["Invalid email or password"] }, status: :unauthorized
     end
+  end
+
+  def token_check
+    head :ok
   end
 end

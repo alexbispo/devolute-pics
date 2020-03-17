@@ -8,3 +8,14 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+module AuthTokenHelper
+  def authenticate(email, password)
+    post api_v1_auth_url, params: {email: email, password: password}
+    JSON.parse(@response.body)['token']
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include AuthTokenHelper
+end
